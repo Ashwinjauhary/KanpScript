@@ -28,6 +28,12 @@ class KanpHandler(http.server.SimpleHTTPRequestHandler):
             self.path = '/web/examples.html'
         elif self.path == '/playground':
             self.path = '/web/playground.html'
+        elif self.path == '/favicon.ico':
+            self.path = '/web/favicon.png'
+        elif self.path == '/manifest.json':
+            self.path = '/web/manifest.json'
+        elif self.path == '/sw.js':
+            self.path = '/web/sw.js'
         elif self.path.startswith('/css/'):
             # Allow serving css from web/css
             self.path = '/web' + self.path

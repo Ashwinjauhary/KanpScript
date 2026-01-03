@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docs - KanpScript</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/web/favicon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,6 +15,11 @@
     <header>
         <nav>
             <a href="/" class="logo">KanpScript</a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/docs" class="active">Docs</a>
@@ -110,6 +117,19 @@
     <footer>
         <p>&copy; 2026 KanpScript Team.</p>
     </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
 </body>
 
 </html>

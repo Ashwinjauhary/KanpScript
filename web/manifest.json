@@ -1,0 +1,16 @@
+{
+    "name": "KanpScript - The Bhaukaal Language",
+    "short_name": "KanpScript",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#050505",
+    "theme_color": "#FF9F1C",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/web/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -251,23 +251,26 @@ code {
 .editor-layout {
     display: flex;
     gap: 1.5rem;
-    height: 600px;
+    height: 75vh;
+    min-height: 600px;
     margin-top: 2rem;
 }
 
 .panel {
-    background: var(--card-bg);
+    background: rgba(10, 10, 12, 0.6);
     border: 1px solid var(--card-border);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     backdrop-filter: blur(20px);
+    flex: 1;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .panel-head {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1.5rem;
     font-weight: 600;
     border-bottom: 1px solid var(--card-border);
     display: flex;
@@ -275,18 +278,22 @@ code {
     align-items: center;
     color: var(--text-muted);
     font-family: var(--font-code);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 textarea {
     background: transparent;
     border: none;
-    color: var(--text-main);
+    color: #f0f0f0;
     padding: 1.5rem;
     font-family: var(--font-code);
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     height: 100%;
     resize: none;
+    width: 100%;
 }
 
 textarea:focus {
@@ -296,9 +303,10 @@ textarea:focus {
 #output {
     padding: 1.5rem;
     font-family: var(--font-code);
-    color: #b0b0b0;
-    font-size: 1rem;
+    color: var(--accent);
+    font-size: 1.1rem;
     overflow-y: auto;
+    white-space: pre-wrap;
 }
 
 /* Animations */
@@ -376,4 +384,213 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* ============================
+   Mobile Responsiveness & UI Polish
+   ============================ */
+
+/* Menu Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text-main);
+    margin: 5px 0;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+/* Active Menu Toggle Animation */
+.nav-open .menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.nav-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-open .menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Mobile Media Query */
+@media (max-width: 1024px) {
+
+    /* Increased breakpoint to cover tablets/large phones */
+    :root {
+        --glass-blur: blur(12px);
+        /* Keep decent blur */
+    }
+
+    /* Container adjustments */
+    .container {
+        padding: 1rem 1rem;
+        /* Further reduced side padding */
+        width: 100%;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll on body */
+    }
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    /* Typography scaling */
+    .hero h1 {
+        font-size: 2.2rem;
+        /* Reduced to fit better */
+        line-height: 1.2;
+        word-wrap: break-word;
+        /* Wrap long words */
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    /* Grid improvements */
+    .grid {
+        display: flex;
+        /* Flexbox is safer than Grid for preventing blowout */
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .card {
+        padding: 1.25rem;
+        /* Compact padding */
+        width: 100%;
+        min-width: 0;
+        /* Allow flex item to shrink */
+        word-wrap: break-word;
+        /* Ensure text wraps */
+    }
+
+    /* Code block safety */
+    pre {
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: pre;
+    }
+
+    /* Responsive Table for Docs */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    /* Mobile Navigation */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.98);
+        /* Less transparent for readability */
+        backdrop-filter: blur(25px);
+        display: flex;
+        /* Ensure flex is applied */
+        flex-direction: column !important;
+        /* FORCE Vertical Stack */
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        /* More spacing between links */
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 9999;
+        /* High z-index */
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        font-size: 1.8rem;
+        /* Larger font for menu items */
+        margin: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: block;
+        /* Ensure block behavior */
+    }
+
+    /* Staggered animation for links */
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links.active a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active a:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active a:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    /* Button adjustments */
+    .btn {
+        width: 100%;
+        /* Full width buttons on mobile */
+        justify-content: center;
+    }
+
+    .hero div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Code block scrolling */
+    pre {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Playground Mobile Overhaul */
+    .editor-layout {
+        flex-direction: column !important;
+        height: auto !important;
+        gap: 2rem;
+    }
+
+    .panel {
+        height: 60vh !important;
+        min-height: 400px;
+        flex: none;
+    }
 }
