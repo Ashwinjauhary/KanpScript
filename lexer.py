@@ -1,5 +1,6 @@
 import json
 import re
+import os
 from errors import BaklolError
 
 class Token:
@@ -19,7 +20,9 @@ class Lexer:
         self.current_char = self.source_code[0] if self.source_code else None
         
         # Load keywords
-        with open("keywords.json", "r") as f:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        keywords_path = os.path.join(base_path, "keywords.json")
+        with open(keywords_path, "r") as f:
             data = json.load(f)
             self.keywords = data["keywords"]
             self.booleans = data["boolean"]

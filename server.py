@@ -13,7 +13,7 @@ from parser import Parser
 from interpreter import Interpreter
 from errors import KanpError
 
-PORT = 8000
+PORT = int(os.environ.get("PORT", 8000))
 
 class KanpHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
