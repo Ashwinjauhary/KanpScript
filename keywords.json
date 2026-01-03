@@ -1,0 +1,21 @@
+{
+    "keywords": {
+        "hum_rakhte_hain": "VAR_DECL",
+        "bol": "PRINT",
+        "agar": "IF",
+        "warna": "ELSE",
+        "jabtak": "WHILE",
+        "bhaukaal": "ADVANCED_BLOCK",
+        "baklol": "THROW_ERROR",
+        "chaukas": "SUCCESS",
+        "kaam": "FUNCTION",
+        "rangbaaj": "EXPERT_FUNC",
+        "kantaap": "RETURN",
+        "bhej": "RETURN",
+        "gyaan_pel": "WARNING"
+    },
+    "boolean": {
+        "sahi": "TRUE",
+        "galat": "FALSE"
+    }
+}

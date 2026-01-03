@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground - KanpScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">KanpScript</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/docs">Docs</a>
+                <a href="/learn">Learn</a>
+                <a href="/examples">Examples</a>
+                <a href="/playground" class="active">Playground</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin:0; font-size: 2rem;">Interactive Shell</h2>
+            <button class="btn" onclick="runCode()">▶ Run Bhaukaal</button>
+        </div>
+
+        <div class="editor-layout">
+            <div class="panel">
+                <div class="panel-head"><span>📝 Code Editor</span></div>
+                <textarea id="code" spellcheck="false">hum_rakhte_hain chai = 3
+bol "Program start ho raha hai"
+
+jabtak chai > 0 {
+    bol "Chai pee lo bhai"
+    chai = chai - 1
+}
+
+agar chai == 0 {
+    bol "Ab kaam pe lago"
+}</textarea>
+            </div>
+            <div class="panel">
+                <div class="panel-head">
+                    <span>📟 Terminal</span>
+                    <button onclick="clearOutput()"
+                        style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-family:var(--font-code);">Clear</button>
+                </div>
+                <!-- Adding ID for dynamic coloring if needed via JS -->
+                <div id="output">Ready for Bhaukaal...</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function runCode() {
+            const code = document.getElementById('code').value;
+            const outputDiv = document.getElementById('output');
+            const btn = document.querySelector('.btn');
+
+            outputDiv.innerText = "Running logic...\n";
+            btn.innerText = "Executing...";
+            btn.style.opacity = "0.7";
+
+            try {
+                const response = await fetch('/run', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code })
+                });
+
+                const data = await response.json();
+                outputDiv.innerText = data.output;
+
+                if (!data.success) {
+                    outputDiv.innerText += "\n[Process Failed]";
+                }
+
+            } catch (error) {
+                outputDiv.innerText = "❌ Network Error: Server respond nahi kar raha.\n" + error;
+            } finally {
+                btn.innerText = "▶ Run Bhaukaal";
+                btn.style.opacity = "1";
+            }
+        }
+
+        function clearOutput() {
+            document.getElementById('output').innerText = "";
+        }
+    </script>
+</body>
+
+</html>

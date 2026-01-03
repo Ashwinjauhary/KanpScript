@@ -1,0 +1,24 @@
+hum_rakhte_hain chai = 3
+
+bol "Program start ho raha hai"
+
+jabtak chai > 0 {
+    bol "Chai pee lo bhai"
+    chai = chai - 1
+}
+
+agar chai == 0 {
+    bol "Ab kaam pe lago"
+}
+
+hum_rakhte_hain bug_fixed = galat
+
+agar bug_fixed {
+    bol "Bug fix ho gaya"
+} warna {
+    bol "Abhi thoda baklol hai"
+}
+
+bhaukaal {
+    bol "This is a bhaukaal block"
+}

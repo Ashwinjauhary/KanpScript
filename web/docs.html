@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs - KanpScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">KanpScript</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/docs" class="active">Docs</a>
+                <a href="/learn">Learn</a>
+                <a href="/examples">Examples</a>
+                <a href="/playground" class="btn">Playground</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Documentation</h1>
+        <p class="tagline">Keywords aur Rules ka Pura Gyaan.</p>
+
+        <h2>Keywords Dictionary</h2>
+        <section class="grid" style="grid-template-columns: 1fr;">
+            <div class="card">
+                <table style="width:100%; text-align:left; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #333;">
+                            <th style="padding:10px; color:var(--primary);">Keyword</th>
+                            <th style="padding:10px;">Standard Equivalent</th>
+                            <th style="padding:10px;">Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">hum_rakhte_hain</td>
+                            <td>var / let</td>
+                            <td>Declare a variable.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">bol</td>
+                            <td>print</td>
+                            <td>Output to console.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">agar / warna</td>
+                            <td>if / else</td>
+                            <td>Conditional logic.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">jabtak</td>
+                            <td>while</td>
+                            <td>Loop until condition false.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">kaam</td>
+                            <td>function</td>
+                            <td>Define a function.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">rangbaaj kaam</td>
+                            <td>expert function</td>
+                            <td>Optimized/Important function.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">bhej</td>
+                            <td>return</td>
+                            <td>Return value.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">bhaukaal</td>
+                            <td>try/block</td>
+                            <td>Critical execution block.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; font-weight:bold;">baklol</td>
+                            <td>throw</td>
+                            <td>Throw an error manually.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <h2>Error Types</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>❌ BaklolError</h3>
+                <p>Thrown for logic errors, missing variables, or general syntax issues.</p>
+            </div>
+            <div class="card" style="border-color: #e74c3c;">
+                <h3>💀 BhaukaalError</h3>
+                <p>System-level failures. Occurs when a <code>bhaukaal</code> block crashes.</p>
+            </div>
+            <div class="card" style="border-color: #f39c12;">
+                <h3>⚠️ GyaanPelWarning</h3>
+                <p>Not implemented yet, but reserved for when you over-engineer simple code.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KanpScript Team.</p>
+    </footer>
+</body>
+
+</html>

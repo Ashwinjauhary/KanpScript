@@ -1,0 +1,26 @@
+kaam jod(a, b) {
+    bol "Jod rahe hain..."
+    bhej a + b
+}
+
+rangbaaj kaam fastMultiply(x, y) {
+    kantaap x * y
+}
+
+hum_rakhte_hain sum = jod(10, 20)
+bol "Sum is:"
+bol sum
+
+bol "Multiplying:"
+hum_rakhte_hain prod = fastMultiply(5, 4)
+bol prod
+
+kaam factorial(n) {
+    agar n == 1 {
+        bhej 1
+    }
+    bhej n * factorial(n - 1)
+}
+
+bol "Factorial of 5 is:"
+bol factorial(5)

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20+ Examples - KanpScript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .category-title {
+            margin-top: 3rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .copy-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .copy-btn:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">KanpScript</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/docs">Docs</a>
+                <a href="/learn">Learn</a>
+                <a href="/examples" class="active">Examples</a>
+                <a href="/playground" class="btn">Playground</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>20+ Bhaukaal Templates</h1>
+        <p class="tagline">Copy code directly into the Playground (Bhai thoda haath ganda karo).</p>
+
+        <!-- BASIC START -->
+        <h2 class="category-title">🐣 Basic (Shuruat)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Hello Kanpur</h3>
+                <pre><code>bol "Hello Kanpur!"
+bol "Code start ho gaya hai."</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>2. Variable Declaration</h3>
+                <pre><code>hum_rakhte_hain x = 10
+hum_rakhte_hain y = 20
+bol x + y</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>3. Simple Maths</h3>
+                <pre><code>hum_rakhte_hain a = 100
+hum_rakhte_hain b = 50
+bol a - b
+bol a * b
+bol a / b</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>4. Boolean Logic</h3>
+                <pre><code>hum_rakhte_hain sach = sahi
+hum_rakhte_hain jhooth = galat
+bol sach
+bol jhooth</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>5. String Message</h3>
+                <pre><code>hum_rakhte_hain msg = "Bhaukaal Tight"
+bol msg</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- CONTROL FLOW -->
+        <h2 class="category-title">🚦 Decisions & Loops (Agar-Magar)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>6. Even/Odd Check</h3>
+                <pre><code>hum_rakhte_hain n = 10
+agar n == 10 {
+    bol "Number 10 hai (Even)"
+} warna {
+    bol "Kuch aur hai"
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>7. Positive/Negative</h3>
+                <pre><code>hum_rakhte_hain num = -5
+agar num > 0 {
+    bol "Positive hai"
+} warna {
+    bol "Negative ya Zero hai"
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>8. Comparison Operator</h3>
+                <pre><code>hum_rakhte_hain age = 18
+agar age >= 18 {
+    bol "Vote de sakta hai"
+} warna {
+    bol "Chhota hai abhi"
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>9. Simple Counter (While)</h3>
+                <pre><code>hum_rakhte_hain i = 1
+jabtak i <= 5 {
+    bol i
+    i = i + 1
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>10. Reverse Countdown</h3>
+                <pre><code>hum_rakhte_hain t = 10
+jabtak t > 0 {
+    bol t
+    t = t - 1
+}
+bol "Happy New Year!"</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- FUNCTIONS -->
+        <h2 class="category-title">🛠 Functions (Jugad)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>11. Basic Function</h3>
+                <pre><code>kaam greet() {
+    bol "Namaste Kanpur!"
+}
+greet()</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>12. Add Two Numbers</h3>
+                <pre><code>kaam add(a, b) {
+    bhej a + b
+}
+bol add(5, 7)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>13. Square Logic</h3>
+                <pre><code>kaam square(n) {
+    bhej n * n
+}
+bol square(9)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>14. Max of Two</h3>
+                <pre><code>kaam max(x, y) {
+    agar x > y { bhej x }
+    warna { bhej y }
+}
+bol max(10, 20)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>15. Recursive Factorial</h3>
+                <pre><code>kaam fact(n) {
+    agar n == 1 { bhej 1 }
+    bhej n * fact(n-1)
+}
+bol fact(5)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- ADVANCED -->
+        <h2 class="category-title">🔥 Advanced (Rangbaazi)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>16. Expert Function</h3>
+                <pre><code>rangbaaj kaam fastCalc(x) {
+    kantaap x * 10
+}
+bol fastCalc(5)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>17. Bhaukaal Block (Try/Catch)</h3>
+                <pre><code>bhaukaal {
+    hum_rakhte_hain risk = 100
+    bol "Risk hai toh ishq hai"
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>18. Sum of First N numbers</h3>
+                <pre><code>kaam sumN(n) {
+    agar n == 0 { bhej 0 }
+    bhej n + sumN(n-1)
+}
+bol sumN(10)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>19. Nested Logic</h3>
+                <pre><code>hum_rakhte_hain x = 10
+hum_rakhte_hain y = 20
+agar x == 10 {
+    agar y == 20 {
+        bol "Dono match ho gaye"
+    }
+}</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="card">
+                <h3>20. Fibonacci (Recursive)</h3>
+                <pre><code>kaam fib(n) {
+    agar n <= 1 { bhej n }
+    bhej fib(n-1) + fib(n-2)
+}
+bol fib(6)</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function copyCode(btn) {
+            const pre = btn.previousElementSibling;
+            const code = pre.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "Copied! ✅";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 KanpScript Team.</p>
+    </footer>
+</body>
+
+</html>

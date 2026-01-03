@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn - KanpScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">KanpScript</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/docs">Docs</a>
+                <a href="/learn" class="active">Learn</a>
+                <a href="/examples">Examples</a>
+                <a href="/playground" class="btn">Playground</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Learn KanpScript</h1>
+        <p class="tagline">Zero se Rangbaaj banne ka safar.</p>
+
+        <section class="grid" style="grid-template-columns: 1fr;">
+
+            <div class="card">
+                <h2>1. Variables (Humari Cheezein)</h2>
+                <p>In Kanpuriya culture, we don't say "I have", we say "Hum rakhte hain". It shows power/bhaukaal.</p>
+                <p>Standard Python: <code>x = 10</code></p>
+                <p>KanpScript:</p>
+                <pre><code>hum_rakhte_hain x = 10
+hum_rakhte_hain naam = "Pintu"</code></pre>
+            </div>
+
+            <div class="card">
+                <h2>2. Speaking Up (Bolna)</h2>
+                <p>To print output, just say <code>bol</code>.</p>
+                <pre><code>bol "Kya haal hai be?"
+bol x</code></pre>
+            </div>
+
+            <div class="card">
+                <h2>3. Decisions (Agar-Warna)</h2>
+                <p>Life is full of choices. If (agar) this happens, do this. Else (warna), do that.</p>
+                <pre><code>agar x > 5 {
+    bol "Jalwa hai bhai ka"
+} warna {
+    bol "Thoda weak hai mamla"
+}</code></pre>
+            </div>
+
+            <div class="card">
+                <h2>4. Loops (Jabtak)</h2>
+                <p>Keep doing it until (jabtak) the work is done.</p>
+                <pre><code>hum_rakhte_hain count = 5
+jabtak count > 0 {
+    bol count
+    count = count - 1
+}</code></pre>
+            </div>
+
+        </section>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="/playground" class="btn">Try It Yourself</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KanpScript Team.</p>
+    </footer>
+</body>
+
+</html>

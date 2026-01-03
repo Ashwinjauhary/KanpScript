@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KanpScript Playground</title>
+    <style>
+        :root {
+            --bg-dark: #0f0f12;
+            --bg-panel: #1a1a1f;
+            --accent: #f5a623;
+            --accent-glow: rgba(245, 166, 35, 0.3);
+            --text-main: #e0e0e0;
+            --text-dim: #888;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --font-code: 'Consolas', 'Monaco', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--bg-panel);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            padding: 1rem;
+            gap: 1rem;
+            height: calc(100vh - 80px);
+        }
+
+        .editor-container, .output-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 0.8rem 1rem;
+            background: #25252b;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        textarea {
+            flex: 1;
+            background: var(--bg-dark);
+            color: #dcdccc;
+            border: none;
+            padding: 1rem;
+            font-family: var(--font-code);
+            font-size: 1rem;
+            resize: none;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        #output {
+            flex: 1;
+            background: #000;
+            color: #ccc;
+            padding: 1rem;
+            font-family: var(--font-code);
+            font-size: 0.95rem;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        button {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            box-shadow: 0 0 10px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .run-btn {
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>KanpScript</h1>
+            <span class="tagline">"Jahan code bhi bhaukaal dikhata hai"</span>
+        </div>
+        <button class="run-btn" onclick="runCode()">▶ Run Bhaukaal</button>
+    </header>
+
+    <main>
+        <div class="editor-container">
+            <div class="panel-header">
+                <span>📝 Editor</span>
+            </div>
+            <textarea id="code" spellcheck="false">
+hum_rakhte_hain chai = 3
+
+bol "Program start ho raha hai"
+
+jabtak chai > 0 {
+    bol "Chai pee lo bhai"
+    chai = chai - 1
+}
+
+agar chai == 0 {
+    bol "Ab kaam pe lago"
+}
+
+bhaukaal {
+    hum_rakhte_hain x = 100
+    bol "System Hacked... mazaak kar raha hu"
+}
+
+bol "Bas aaj ke liye itna hi"
+            </textarea>
+        </div>
+
+        <div class="output-container">
+            <div class="panel-header">
+                <span>📟 Terminal Output</span>
+                <button style="background:transparent; color:#888; padding:0; font-size:0.8rem;" onclick="clearOutput()">Clear</button>
+            </div>
+            <div id="output">Output will appear here...</div>
+        </div>
+    </main>
+
+    <script>
+        async function runCode() {
+            const code = document.getElementById('code').value;
+            const outputDiv = document.getElementById('output');
+            const btn = document.querySelector('.run-btn');
+
+            outputDiv.innerText = "Running logic...\n";
+            btn.classList.add('loading');
+            btn.innerText = "Executing...";
+
+            try {
+                const response = await fetch('/run', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code })
+                });
+
+                const data = await response.json();
+                outputDiv.innerText = data.output;
+                
+                if (data.success) {
+                    outputDiv.style.color = "#ccc"; 
+                } else {
+                    // Highlight errors if possible, though baked into text
+                    outputDiv.style.color = "#ffdddd"; 
+                }
+
+            } catch (error) {
+                outputDiv.innerText = "❌ Network Error: Server shayad band hai.\n" + error;
+                outputDiv.style.color = "#e74c3c";
+            } finally {
+                btn.classList.remove('loading');
+                btn.innerText = "▶ Run Bhaukaal";
+            }
+        }
+
+        function clearOutput() {
+            document.getElementById('output').innerText = "";
+        }
+    </script>
+
+</body>
+</html>
